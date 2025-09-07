@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>从人人都是产品经理到人人都是创业者 | Product Manager to Entrepreneur Course</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: #1a202c;
+            background: #f7fafc;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #1a202c;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .lang-toggle {
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: transform 0.3s ease;
+        }
+
+        .lang-toggle:hover {
+            transform: translateY(-2px);
+        }
+
+        /* 修改点: Hero Section Style Update */
+        .hero {
+            /* 移除全屏高度和深色背景 */
+            min-height: auto; 
+            padding: 120px 0 60px 0; /* 调整内边距，为顶部导航栏留出空间 */
+            background: #ffffff; /* 更换为白色背景 */
+            text-align: left; /* 文本左对齐 */
+        }
+
+        .hero-content {
+            max-width: 800px; /* 限制内容宽度，提高可读性 */
+            margin: 0 auto;
+        }
+
+        /* 标题样式 */
+        .hero-content h1 {
+            font-size: 2.5rem; /* 调整字号 */
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #764ba2; /* 改为紫色 */
+            text-shadow: none; /* 移除阴影 */
+        }
+
+        /* 副标题样式 */
+        .hero-content .subtitle {
+            font-size: 1.2rem; /* 调整字号 */
+            margin-bottom: 1rem;
+            color: #1a202c; /* 改为黑色 */
+            text-shadow: none; /* 移除阴影 */
+            font-weight: 400; /* 正常字重 */
+        }
+        
+        /* 正文段落样式 */
+        .hero-content p {
+            font-size: 1.2rem; /* 调整字号 */
+            color: #1a202c; /* 改为黑色 */
+            text-shadow: none; /* 移除阴影 */
+            font-weight: 400; /* 正常字重 */
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-start; /* 按钮左对齐 */
+            margin-top: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            display: inline-block;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-secondary {
+            background: #667eea; /* 改变按钮背景色以适应白色背景 */
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background: #764ba2; /* 改变按钮悬停背景色 */
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 0;
+            background: #ffffff;
+        }
+        
+        section:nth-child(even) {
+            background: #F4F0F8; 
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            color: #1a202c;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Course Overview */
+        .course-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .course-card {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .course-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+        }
+
+        .course-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .course-card p {
+            color: #4a5568;
+            font-weight: 400;
+        }
+
+        /* Instructor */
+        .instructor {
+            background: #F4F0F8;
+            color: #1a202c;
+        }
+
+        .instructor .section-title {
+            color: #1a202c !important;
+            background: linear-gradient(45deg, #667eea, #764ba2) !important;
+            -webkit-background-clip: text !important;
+            -webkit-text-fill-color: transparent !important;
+            text-shadow: none;
+        }
+
+        .instructor h3 {
+            color: #1a202c !important;
+            text-shadow: none;
+        }
+        
+        .instructor p {
+            color: #2d3748 !important; 
+            text-shadow: none !important;
+        }
+
+        .instructor-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .instructor-image {
+            text-align: center;
+        }
+
+        .instructor-avatar {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid rgba(102, 126, 234, 0.3);
+            background: white;
+            color: #764ba2;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            margin: 0 auto;
+        }
+
+        /* Students Grid */
+        .students-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .student-card {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 15px;
+            box-shadow: 0 8px 25px rgba(102, 126, 234, 0.1);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(102, 126, 234, 0.1);
+        }
+
+        .student-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(102, 126, 234, 0.15);
+        }
+
+        .student-card h3 {
+            color: #1a202c;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .student-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+
+        /* Video Section */
+        .video-container {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px rgba(102, 126, 234, 0.2);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 2rem;
+            text-align: left;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .footer-content a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-content a:hover {
+            color: #667eea;
+        }
+
+        /* Language Toggle */
+        .lang-en, .lang-zh {
+            display: none;
+        }
+        
+        .lang-en.active, .lang-zh.active {
+            display: block;
+        }
+
+        /* Mobile Responsivity */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-content {
+                text-align: center;
+            }
+            
+            .cta-buttons {
+                justify-content: center;
+            }
+
+            .instructor-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.6s ease forwards;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="container">
+            <div class="logo">PM to Entrepreneur</div>
+            <ul class="nav-links">
+                <li><a href="#home" data-en="Home" data-zh="首页">Home</a></li>
+                <li><a href="#course" data-en="Course" data-zh="课程">Course</a></li>
+                <li><a href="#instructor" data-en="Instructor" data-zh="讲师">Instructor</a></li>
+                <li><a href="#students" data-en="Students" data-zh="学员">Students</a></li>
+                <li><a href="#video" data-en="Recording" data-zh="录播">Recording</a></li>
+            </ul>
+            <button class="lang-toggle" onclick="toggleLanguage()">中/EN</button>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content fade-in">
+                <div class="lang-en active">
+                    <h1>From Product Manager to Entrepreneur</h1>
+                    <p class="subtitle">How Students Build Their Foothold in Society</p>
+                    <p>A free course designed to help students master product management skills and entrepreneurial thinking in the AI era</p>
+                </div>
+                <div class="lang-zh">
+                    <h1>从人人都是产品经理到人人都是创业者</h1>
+                    <p class="subtitle">学生怎样在社会立足</p>
+                    <p>专为学生设计的免费课程，帮助大家在AI时代掌握产品经理技能和创业思维</p>
+                </div>
+                <div class="cta-buttons">
+                    <a href="#video" class="btn btn-secondary" data-en="Watch Course Recording" data-zh="观看课程录播">Watch Course Recording</a>
+                    <a href="mailto:jiajing.dai7323@gmail.com" class="btn btn-secondary" data-en="Contact Us" data-zh="联系我们">Contact Us</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="course">
+        <div class="container">
+            <div class="lang-en active">
+                <h2 class="section-title">Course Overview</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
+                    In the AI era, how can students maintain competitiveness? This course helps you transition from learning methodology to practical application, truly landing PM positions in the industry.
+                </p>
+            </div>
+            <div class="lang-zh">
+                <h2 class="section-title">课程概览</h2>
+                <p style="text-align: center; font-size: 1.2rem; margin-bottom: 3rem;">
+                    AI时代下，学生如何保持竞争力？本课程帮你从学习方法论到真正落地，在行业里拿到PM岗位。
+                </p>
+            </div>
+
+            <div class="course-grid">
+                <div class="course-card fade-in">
+                    <div class="lang-en active">
+                        <h3>Core Business & PM Skills</h3>
+                        <p>Master the fundamental skills every product manager needs in today's competitive landscape.</p>
+                    </div>
+                    <div class="lang-zh">
+                        <h3>商业核心和产品经理技能</h3>
+                        <p>掌握现今竞争环境下每个产品经理都需要的基础技能。</p>
+                    </div>
+                </div>
+
+                <div class="course-card fade-in">
+                    <div class="lang-en active">
+                        <h3>Competitive Analysis</h3>
+                        <p>Learn to analyze competitors and understand industry dynamics using proven frameworks.</p>
+                    </div>
+                    <div class="lang-zh">
+                        <h3>竞品分析和行业解剖</h3>
+                        <p>学习用成熟的框架分析竞争对手和理解行业动态。</p>
+                    </div>
+                </div>
+
+                <div class="course-card fade-in">
+                    <div class="lang-en active">
+                        <h3>Competitive Advantage</h3>
+                        <p>Transform available resources into sustainable competitive advantages.</p>
+                    </div>
+                    <div class="lang-zh">
+                        <h3>将资源变为竞争优势</h3>
+                        <p>将可用资源转化为可持续的竞争优势。</p>
+                    </div>
+                </div>
+
+                <div class="course-card fade-in">
+                    <div class="lang-en active">
+                        <h3>Technology Disruption</h3>
+                        <p>Understand how new technologies disrupt markets and drive adoption.</p>
+                    </div>
+                    <div class="lang-zh">
+                        <h3>新技术的革命和普及</h3>
+                        <p>理解新技术如何颠覆市场并推动普及。</p>
+                    </div>
+                </div>
+
+                <div class="course-card fade-in">
+                    <div class="lang-en active">
+                        <h3>Business Models</h3>
+                        <p>Learn the three horizons framework and various business model strategies.</p>
+                    </div>
+                    <div class="lang-zh">
+                        <h3>三级火箭及商业模式</h3>
+                        <p>学习三级火箭框架和各种商业模式策略。</p>
+                    </div>
+                </div>
+
+                <div class="course-card fade-in">
+                    <div class="lang-en active">
+                        <h3>PRD & MVP Design</h3>
+                        <p>Write product requirements that both engineers and AI coding software can understand.</p>
+                    </div>
+                    <div class="lang-zh">
+                        <h3>产品需求文档及MVP设计</h3>
+                        <p>编写让工程师和AI编程软件都能理解的产品需求文档。</p>
+                    </div>
+                </div>
+
+                <div class="course-card fade-in">
+                    <div class="lang-en active">
+                        <h3>User Growth</h3>
+                        <p>Understand why many companies struggle with user growth and how to overcome it.</p>
+                    </div>
+                    <div class="lang-zh">
+                        <h3>用户增长</h3>
+                        <p>理解为什么很多公司在用户增长上遇到困难以及如何克服。</p>
+                    </div>
+                </div>
+
+                <div class="course-card fade-in">
+                    <div class="lang-en active">
+                        <h3>Monetization & Pricing</h3>
+                        <p>Learn effective pricing strategies for your monetization model.</p>
+                    </div>
+                    <div class="lang-zh">
+                        <h3>变现如何定价</h3>
+                        <p>为你的变现模式学习有效的定价策略。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="instructor" class="instructor">
+        <div class="container">
+            <div class="instructor-content">
+                <div class="instructor-image">
+                    <div class="instructor-avatar">JJ</div>
+                </div>
+                <div>
+                    <div class="lang-en active">
+                        <h2 class="section-title">Meet Your Instructor</h2>
+                        <h3 style="font-size: 2rem; margin-bottom: 1rem;">JJ (小戴没得觉睡)</h3>
+                        <p style="font-size: 1.2rem; margin-bottom: 2rem; font-weight: 500;">
+                            Experienced product manager and entrepreneur with a passion for helping students transition from learning to practical application. JJ believes in hands-on experience and real-world product development as the best way to learn PM skills.
+                        </p>
+                        <p style="font-style: italic; font-size: 1.1rem; font-weight: 500;">
+                            "I don't just want students to learn methodology, I want them to be able to implement it and truly land PM positions in the industry." - JJ
+                        </p>
+                    </div>
+                    <div class="lang-zh">
+                        <h2 class="section-title">认识你的讲师</h2>
+                        <h3 style="font-size: 2rem; margin-bottom: 1rem;">JJ (小戴没得觉睡)</h3>
+                        <p style="font-size: 1.2rem; margin-bottom: 2rem; font-weight: 500;">
+                            经验丰富的产品经理和创业者，热衷于帮助学生从学习过渡到实际应用。JJ相信实践经验和真实世界的产品开发是学习PM技能的最佳方式。
+                        </p>
+                        <p style="font-style: italic; font-size: 1.1rem; font-weight: 500;">
+                            "我不只想让学生学会方法论，更要他们能落地，真正在行业里拿到PM岗位。" - JJ
+                        </p>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                         <a href="https://www.linkedin.com/in/jjneversleeps/" target="_blank" class="btn btn-secondary">
+                            <span data-en="View LinkedIn Profile" data-zh="查看LinkedIn档案">View LinkedIn Profile</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="students">
+        <div class="container">
+            <div class="lang-en active">
+                <h2 class="section-title">Our Students</h2>
+            </div>
+            <div class="lang-zh">
+                <h2 class="section-title">我们的学员</h2>
+            </div>
+
+            <div class="students-grid" id="studentsGrid">
+                </div>
+        </div>
+    </section>
+
+    <section id="video">
+        <div class="container">
+            <div class="video-container">
+                <div class="lang-en active">
+                    <h2 class="section-title">Course Recording</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 3rem;">
+                        Watch the complete course recording and start your journey from Product Manager to Entrepreneur
+                    </p>
+                </div>
+                <div class="lang-zh">
+                    <h2 class="section-title">课程录播</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 3rem;">
+                        观看完整的课程录播，开始你从产品经理到创业者的旅程
+                    </p>
+                </div>
+                
+                <div class="video-wrapper" id="videoWrapper">
+                    <iframe 
+                        id="courseVideo"
+                        src="https://www.youtube.com/embed/BRgj4S-xxxg" 
+                        allowfullscreen>
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>
+                    <h3 data-en="Contact" data-zh="联系方式">Contact</h3>
+                    <p>jiajing.dai7323@gmail.com</p>
+                </div>
+                <div>
+                    <h3 data-en="Course Format" data-zh="课程形式">Course Format</h3>
+                    <p data-lang-key="courseFormat">2 hours per week + 15-20 hours flexible homework</p>
+                </div>
+                <div>
+                    <h3 data-en="Philosophy" data-zh="课程理念">Philosophy</h3>
+                    <p data-lang-key="philosophy">Learning by doing, building real products</p>
+                </div>
+                 <div>
+                    <h3 data-en="Documents" data-zh="文档">Documents</h3>
+                    <p>
+                        <a href="https://drive.google.com/drive/folders/1fWbBWLG94Bc5a7biwWIc1rRjycP-z5kp?usp=drive_link" target="_blank" data-lang-key="documents">Course materials and resources</a>
+                    </p>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #34495e; padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2025 From Product Manager to Entrepreneur Course. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        let isEnglish = true;
+
+        const translations = {
+            en: {
+                courseFormat: "2 hours per week + 15-20 hours flexible homework",
+                philosophy: "Learning by doing, building real products",
+                documents: "Course materials and resources"
+            },
+            zh: {
+                courseFormat: "每周2小时课程 + 15-20小时灵活作业时间",
+                philosophy: "在实践中学习，构建真实产品",
+                documents: "课程材料和资源"
+            }
+        };
+
+        function setLanguage(lang) {
+            isEnglish = (lang === 'en');
+            
+            document.querySelectorAll('.lang-en').forEach(el => el.classList.toggle('active', isEnglish));
+            document.querySelectorAll('.lang-zh').forEach(el => el.classList.toggle('active', !isEnglish));
+
+            document.querySelectorAll('[data-en][data-zh]').forEach(element => {
+                element.textContent = isEnglish ? element.getAttribute('data-en') : element.getAttribute('data-zh');
+            });
+            
+            document.querySelectorAll('[data-lang-key]').forEach(element => {
+                const key = element.getAttribute('data-lang-key');
+                element.textContent = translations[lang][key];
+            });
+
+            updateVideoSource();
+        }
+
+        function toggleLanguage() {
+            const newLang = isEnglish ? 'zh' : 'en';
+            setLanguage(newLang);
+        }
+
+        function updateVideoSource() {
+            const videoIframe = document.getElementById('courseVideo');
+            const youtubeUrl = 'https://www.youtube.com/embed/BRgj4S-xxxg';
+            const bilibiliUrl = 'https://player.bilibili.com/player.html?bvid=BV1nVt3zHEEq&page=1&as_wide=1&high_quality=1&danmaku=0';
+            
+            videoIframe.src = isEnglish ? youtubeUrl : bilibiliUrl;
+        }
+
+        const studentProfiles = [
+            { name: "Yaocheng Zuo", url: "https://www.linkedin.com/in/yaocheng-zuo" },
+            { name: "Shirley He", url: "https://www.linkedin.com/in/shirley-he/" },
+            { name: "Jin Zeng", url: "https://www.linkedin.com/in/jin-zeng-ba1187247/" },
+            { name: "Lisa", url: "https://www.linkedin.com/in/xwenglisa" },
+            { name: "Kaiwei Chen", url: "https://www.linkedin.com/in/kaiweiichen" },
+            { name: "Yogesh", url: "https://www.linkedin.com/in/yogeshlink" },
+            { name: "Lexin Liu", url: "https://www.linkedin.com/in/lexin-liu-b948202b4/" },
+            { name: "Yuanqin Dai", url: "https://www.linkedin.com/in/yuanqin-dai/" },
+            { name: "Tianrun Yan", url: "https://www.linkedin.com/in/tianrunyan" },
+            { name: "Charlyne Dong", url: "https://www.linkedin.com/in/charlynedong/" },
+            { name: "Sonia Chen", url: "https://www.linkedin.com/in/soniachenhm/" },
+            { name: "Hamzeh Hammad", url: "https://www.linkedin.com/in/hamzeh-hammad/" },
+            { name: "Ruiqi Ge", url: "https://www.linkedin.com/in/ruiqi-ge-8882aa257/" }
+        ];
+
+        function generateStudents() {
+            const studentsGrid = document.getElementById('studentsGrid');
+            studentsGrid.innerHTML = '';
+
+            studentProfiles.forEach(student => {
+                const studentCard = document.createElement('div');
+                studentCard.className = 'student-card';
+                
+                const initials = student.name.split(' ').map(word => word[0]).join('');
+                
+                studentCard.innerHTML = `
+                    <div class="student-avatar">${initials}</div>
+                    <h3>${student.name}</h3>
+                    <a href="${student.url}" target="_blank" class="btn btn-secondary" style="margin-top: 1rem; padding: 0.5rem 1rem; font-size: 0.9rem;">
+                        View Profile
+                    </a>
+                `;
+                
+                studentsGrid.appendChild(studentCard);
+            });
+        }
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            generateStudents();
+            setLanguage('en'); 
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.course-card, .student-card').forEach(card => {
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>
